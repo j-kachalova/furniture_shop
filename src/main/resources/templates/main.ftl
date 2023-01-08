@@ -6,7 +6,14 @@
 
     </@h.header>
     <main class="main">
+
+
+
         <div class="admin">
+
+
+
+            <!-- Нормальная часть -->
             <div>
                 <form method="post" action="/main" enctype="multipart/form-data">
                     <label>
@@ -53,7 +60,22 @@
                             <div>Доступно к заказу ${product.amount}</div>
                         </div>
                         <button class="button"><a class="button" href="/main/${product.idProduct}">Редактировать </a></button>
-                        <button class="button"> Удалить </button>
+                        <button class="button" onclick="popUpOpen()"> Удалить </button>
+
+                        <!--Всплывающее окно -->
+                        <div class="popUpPage_off">
+                            <div class="popUpWin">
+                                <div class="popUpQuestion">Вы уверены, что хотите удалить товар?</div>
+                                <div class="popUpButtons">
+                                    <a class="button b_answ" href="/main/delete/${product.idProduct}">Да</a>
+                                    <button class="button b_answ" onclick="popUpClose()">Нет</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
                     </div>
                 <#else>
                     No products
@@ -62,4 +84,12 @@
 
         </div>
     </main>
+    <script>
+        function popUpOpen() {
+            document.getElementsByClassName("popUpPage_off")[0].setAttribute("class", "popUpPage_on");
+        }
+        function popUpClose(){
+            document.getElementsByClassName("popUpPage_on")[0].setAttribute("class", "popUpPage_off");
+        }
+    </script>
 </@c.page>

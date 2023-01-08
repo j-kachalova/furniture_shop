@@ -77,6 +77,9 @@ body{
     border-style: none;
     font-size: 16px;
 }
+.button{
+    cursor: pointer;
+}
 .row, h2, h1{
     padding-bottom: 10px;
 }
@@ -156,4 +159,38 @@ img{
 h3{
     color: #F7E018;
 }
-
+.popUpPage_on{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index:1000 ;
+}
+.popUpPage_off{
+    display: none;
+}
+.popUpWin{
+    width: 50%;
+    height: 30%;
+    outline: 1px solid #F7E018;
+    border-radius: 20px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.b_answ{
+    width: 50px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.popUpButtons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

@@ -143,5 +143,11 @@ public class AdminController {
         return "redirect:/user";
     }
 
+    @GetMapping("/main/delete/{product}")
+    public String deleteProduct(@PathVariable Product product) {
+        productRepo.delete(product);
+        return "redirect:/main";
+    }
+
 
 }
