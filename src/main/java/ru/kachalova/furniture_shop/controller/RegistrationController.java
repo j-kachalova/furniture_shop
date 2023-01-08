@@ -22,6 +22,7 @@ public class RegistrationController {
     private PasswordEncoder passwordEncoder;
     @GetMapping("/registration")
     public String registration() {
+        System.out.println("регистрация");
         return "registration";
     }
 

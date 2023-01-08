@@ -17,7 +17,7 @@ public class Product {
     private Integer price;
     private Integer amount;
     private String filename;
-
+    private String description;
     public Product() {
     }
 

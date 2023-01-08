@@ -55,15 +55,15 @@ body{
     height: 100%;
     width: 100%;
     color: white;
-    background-color: white;
     margin-bottom: 100px;
     padding-top: 68px;
     display: flex;
     justify-content: flex-start;
+
 }
 .block{
     padding: 50px 150px 50px 150px;
-    background-color: #F7E018;
+    box-sizing: border-box;
     width: 100%;
 }
 .button{
@@ -112,12 +112,48 @@ a{
     background-color: blue;
 }
 .prod{
-    background-color: chartreuse;
+    width: 200px;
+    outline: #F7E018 1px solid;
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.prod:hover{
+    box-shadow: #F7E018 0 0 20px ;
+}
+.img_prod{
+    margin: 0;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
 }
 img{
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-.img_prod{
-    width: 150px;
-    height: 150px;
+
+.admin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
 }
+.admin_prod{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+}
+.block_add, .input_add{
+    padding: 8px 5px 8px 5px;
+}
+.text_prod{
+    padding: 10px;
+}
+h3{
+    color: #F7E018;
+}
+
