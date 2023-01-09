@@ -3,7 +3,7 @@
 
 <@c.page>
     <div class="block">
-        <a class="button" href="/personalArea">Назад</a>
+        <a class="button" href="/admin">Назад</a>
         <h2 style="text-align: center">Пользователи</h2>
         <table>
             <thead>

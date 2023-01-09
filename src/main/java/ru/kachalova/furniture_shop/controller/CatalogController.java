@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.kachalova.furniture_shop.domain.Category;
 import ru.kachalova.furniture_shop.domain.CategoryGroup;
+import ru.kachalova.furniture_shop.domain.Product;
 import ru.kachalova.furniture_shop.repos.CategoryRepo;
+import ru.kachalova.furniture_shop.repos.ProductRepo;
 import ru.kachalova.furniture_shop.repos.UserRepo;
 
 import java.util.List;
@@ -22,7 +24,8 @@ public class CatalogController {
     private UserRepo clientRepo;
     @Autowired
     private CategoryRepo categoryRepo;
-
+    @Autowired
+    private ProductRepo productRepo;
     @GetMapping
     public String tariff(Map<String, Object> model) {
         Stream<Category> tariffStream = StreamSupport.stream(categoryRepo.findAll().spliterator(), false);
@@ -39,7 +42,13 @@ public class CatalogController {
             }
             System.out.println();
         }
-        model.put("tariff", tariffByCategory.entrySet());
+        model.put("groups", tariffByCategory.entrySet());
+        Iterable<Product> products = productRepo.findAll();
+
+
+        products = productRepo.findAll();
+
+        model.put("products", products);
         return "catalog";
     }
 

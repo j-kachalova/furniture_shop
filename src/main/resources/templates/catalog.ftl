@@ -10,24 +10,105 @@
             <h1>Каталог</h1>
             <div class="catalog">
                 <div class="groups">
-                    <#list tariff as tariff>
-                        <h2><a href="#">${tariff.key.name}</a></h2>
+                    <#list groups as group>
+                        <div class="container" >
+                            <div>${group.key.name}</div>
+                            <div class="category">
+                                <#list group.value as category>
+                                    <div><input type="checkbox" name="CategProd" value="${category.idCategory}">${category.name}</div>
+                                </#list>
+                            </div>
+                        </div>
                     <#else>
                     </#list>
+                    <button class="button" onclick="f()">Отфильтровать</button>
                 </div>
-                <div>
-                    <#list tariff as tariff>
-                        <div class="category">
-                            <#list tariff.value as value>
-                                <div><a href="#">${value.name}</a></div>
-                            </#list>
-                        </div>
-                    </#list>
-                </div>
+
 
             </div>
+            <div class="productGrid">
+                <#list products as product>
+                    <div class="filterDiv prod ${product.category.idCategory}">
+                        <div class="img_prod">
+                            <#if product.filename??>
+                                <img class="img" src="/img/${product.filename}" alt="image">
+                            </#if>
+                        </div>
+                        <div class="text_prod">
+                            <h3>${product.price} ₽</h3>
+                            <div>${product.name}</div>
+                            <#if product.amount!=0>
+                                <div>Доступно к заказу ${product.amount}</div>
+                            </#if>
+                            <#if product.amount==0>
+                                <div>Нет в наличии</div>
+                            </#if>
+                        </div>
 
-
+                    </div>
+                </#list>
+            </div>
         </div>
     </main>
+    <script>
+        filterSelection("all")
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filterDiv");
+            if (c === "all") c = "";
+            // Добавить класс "show" (display:block) к отфильтрованным элементам и удалите класс "show" из элементов, которые не выбраны
+            for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+        }
+
+        // Показать отфильтрованные элементы
+        function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {
+                    element.className += " " + arr2[i];
+                }
+            }
+        }
+
+        // Скрыть элементы, которые не выбраны
+        function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Добавить активный класс к текущей кнопке управления (выделите ее)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+
+
+        function f() {
+            let inputs = document.getElementsByName('CategProd');
+            let checkedValue = new Array();
+            inputs.forEach(function (input) {
+                if (input.checked) checkedValue.push(input.value)
+            });
+            console.log(checkedValue);
+            filterSelection(checkedValue);
+        }
+
+    </script>
 </@c.page>

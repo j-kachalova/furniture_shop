@@ -25,7 +25,7 @@
                     <label>
                         <input class="input_add" type="number" name="amount" placeholder="Количество на складе">
                     </label>
-                    <select name="categoryP">
+                    <select class="input_add" name="categoryP">
                         <option disabled selected value="">Категория</option>
                         <#list categories as category>
                             <option value="${category.name}">${category.name}</option>
@@ -46,7 +46,7 @@
                 </label>
                 <button class="button" type="submit">Найти</button>
             </form>
-            <div class="admin_prod">
+            <div class="productGrid">
                 <#list products as product>
                     <div class="prod">
                         <div class="img_prod">

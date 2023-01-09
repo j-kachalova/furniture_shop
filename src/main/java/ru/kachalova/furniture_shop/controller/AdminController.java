@@ -153,5 +153,8 @@ public class AdminController {
         model.addAttribute("product",product);
         return "editProduct";
     }
-
+    @GetMapping("/admin")
+    public String menu(){
+        return "admin";
+    }
 }
