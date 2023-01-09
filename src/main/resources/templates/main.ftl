@@ -51,7 +51,7 @@
                     <div class="prod">
                         <div class="img_prod">
                             <#if product.filename??>
-                                <img src="/img/${product.filename}" alt="image">
+                                <img class="img" src="/img/${product.filename}" alt="image">
                             </#if>
                         </div>
                         <div class="text_prod">
@@ -59,7 +59,7 @@
                             <div>${product.name}</div>
                             <div>Доступно к заказу ${product.amount}</div>
                         </div>
-                        <button class="button"><a class="button" href="/main/${product.idProduct}">Редактировать </a></button>
+                        <button class="button"><a class="button" href="/main/edit/${product.idProduct}">Редактировать </a></button>
                         <button class="button" onclick="popUpOpen()"> Удалить </button>
 
                         <!--Всплывающее окно -->

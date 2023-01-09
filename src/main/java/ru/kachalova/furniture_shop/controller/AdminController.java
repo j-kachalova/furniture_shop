@@ -148,6 +148,10 @@ public class AdminController {
         productRepo.delete(product);
         return "redirect:/main";
     }
-
+    @GetMapping("/main/edit/{product}")
+    public String editProduct(@PathVariable Product product, Model model){
+        model.addAttribute("product",product);
+        return "editProduct";
+    }
 
 }

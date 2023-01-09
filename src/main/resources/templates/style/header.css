@@ -134,7 +134,7 @@ a{
     height: 150px;
     box-sizing: border-box;
 }
-img{
+.img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -148,7 +148,7 @@ img{
 }
 .admin_prod{
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: repeat(3, 1fr);
 }
 .block_add, .input_add{
     padding: 8px 5px 8px 5px;
@@ -156,7 +156,7 @@ img{
 .text_prod{
     padding: 10px;
 }
-h3{
+h3, h2{
     color: #F7E018;
 }
 .popUpPage_on{
@@ -193,4 +193,24 @@ h3{
     width: 100%;
     display: flex;
     justify-content: space-around;
+}
+.input_descript{
+    width: 300px;
+    height: 200px;
+}
+textarea{
+    width: 500px;
+}
+.productPage{
+    display: flex;
+    flex-direction: row;
+
+}
+.colPr{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.nameProduct{
+    padding: 50px 0 0 50px;
 }
