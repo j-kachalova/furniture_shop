@@ -17,15 +17,15 @@
             <div>
                 <form method="post" action="/main" enctype="multipart/form-data">
                     <label>
-                        <input class="input_add" type="text" name="name" required placeholder="Введите название" />
+                        <input class="input_add" type="text" name="name" placeholder="Введите название" />
                     </label>
                     <label>
-                        <input class="input_add" type="number" name="price" required placeholder="Цена">
+                        <input class="input_add" type="number" name="price" placeholder="Цена">
                     </label>
                     <label>
-                        <input class="input_add" type="number" name="amount" required placeholder="Количество на складе">
+                        <input class="input_add" type="number" name="amount" placeholder="Количество на складе">
                     </label>
-                    <select class="input_add" required name="categoryP">
+                    <select class="input_add" name="categoryP">
                         <option disabled selected value="">Категория</option>
                         <#list categories as category>
                             <option value="${category.name}">${category.name}</option>
@@ -33,8 +33,8 @@
                             No categories
                         </#list>
                     </select>
-                    <input class="input_add" type="text" required name="description" placeholder="Описание товара">
-                    <input class="button" type="file" required name="file">
+                    <input class="input_add" type="text" name="description" placeholder="Описание товара">
+                    <input class="button" type="file" name="file">
                     <input type="hidden" name="_csrf" value="${_csrf.token}" />
                     <button class="button block_add" type="submit">Добавить</button>
                 </form>

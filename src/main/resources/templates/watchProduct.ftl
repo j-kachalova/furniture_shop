@@ -10,16 +10,21 @@
             <form >
                 <div class="nameProduct">${product.name}</div>
                 <div class="productPage">
-                    <div class="colPr">
-                        <img src="/img/${product.filename}" alt="image">
-                        <div>${product.description}</div>
+                    <div class="colPr img_description">
+                        <img class="img_product" src="/img/${product.filename}" alt="image">
+                        <div class="description">${product.description}</div>
                     </div>
                     <div class="colPr">
                         <h2>${product.price}</h2>
-                        <#if product??>
-                        <div>Доступно к заказу: ${product.amount}</div>
-                        <button class="button"> Избранное</button>
-                        <button class="button"> Добавить в корзину</button>
+
+                        <#if product.amount!=0>
+                            <div>Доступно к заказу: ${product.amount}</div>
+                            <button class="button"> Избранное</button>
+                            <button class="button"> Добавить в корзину</button>
+                        </#if>
+                        <#if product.amount==0>
+                            <div>Нет в наличии</div>
+                            <button class="button"> Избранное</button>
                         </#if>
 
                     </div>

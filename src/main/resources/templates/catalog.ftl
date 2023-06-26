@@ -29,22 +29,23 @@
             <div class="productGrid">
                 <#list products as product>
                     <div class="filterDiv prod ${product.category.idCategory}">
-                        <div class="img_prod">
-                            <#if product.filename??>
-                                <img class="img" src="/img/${product.filename}" alt="image">
-                            </#if>
-                        </div>
-                        <div class="text_prod">
-                            <h3>${product.price} ₽</h3>
-                            <div>${product.name}</div>
-                            <#if product.amount!=0>
-                                <div>Доступно к заказу ${product.amount}</div>
-                            </#if>
-                            <#if product.amount==0>
-                                <div>Нет в наличии</div>
-                            </#if>
-                        </div>
-
+                        <a href="/product/${product.idProduct}">
+                            <div class="img_prod">
+                                <#if product.filename??>
+                                    <img class="img" src="/img/${product.filename}" alt="image">
+                                </#if>
+                            </div>
+                            <div class="text_prod">
+                                <h3>${product.price} ₽</h3>
+                                <div>${product.name}</div>
+                                <#if product.amount!=0>
+                                    <div>Доступно к заказу ${product.amount}</div>
+                                </#if>
+                                <#if product.amount==0>
+                                    <div>Нет в наличии</div>
+                                </#if>
+                            </div>
+                        </a>
                     </div>
                 </#list>
             </div>

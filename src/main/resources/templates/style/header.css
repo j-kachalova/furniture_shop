@@ -216,10 +216,20 @@ textarea{
     padding: 50px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 .nameProduct{
     padding: 50px 0 0 50px;
 }
 .button_admin{
-    margin: 10px;
+    margin: 50px 0;
+}
+.img_product{
+    width: 50vw;
+}
+.img_description{
+    width: 75vw;
+}
+.description{
+    padding-top: 50px;
 }

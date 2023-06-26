@@ -7,20 +7,84 @@
     </@h.header>
     <main class="main">
         <div class="block">
-            <h1>Кровати</h1>
-            <#list product as product>
-                <div class="product_list">
-                    <#list product.value as value>
-                        <div class="product_block">
-                            <img src="https://hoff.ru/upload/hoff_resize/hoff-images/449/864/6/4d866970f2b2f2e343194aec8e783283.jpg/1500x1000_85.webp" alt="image"/>
-                            <div><a href="#">${value.name}</a></div>
-                            <div><a href="#">${value.price}</a></div>
-                            <div><a href="#">Доступно к заказу: ${value.amount}</a></div>
+            <form method="get" action="/product">
+                <div>Категории</div>
+                <#list categories as category>
+                <label><input type="checkbox" name="${category.name}">${category.name}</label>
+                </#list>
+            </form>
+
+            <div class="productGrid">
+                <#list products as product>
+                    <div class="filterDiv prod">
+                        <div class="img_prod">
+                            <#if product.filename??>
+                                <img class="img" src="/img/${product.filename}" alt="image">
+                            </#if>
+                        </div>
+                        <div class="text_prod">
+                            <h3>${product.price} ₽</h3>
+                            <div>${product.name}</div>
+                            <#if product.amount!=0>
+                                <div>Доступно к заказу ${product.amount}</div>
+                            </#if>
+                            <#if product.amount==0>
+                                <div>Нет в наличии</div>
+                            </#if>
                         </div>
 
-                    </#list>
-                </div>
-            </#list>
+                    </div>
+                </#list>
+            </div>
         </div>
     </main>
+    <script>
+        filterSelection("all")
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filterDiv");
+            if (c === "all") c = "";
+            // Добавить класс "show" (display:block) к отфильтрованным элементам и удалите класс "show" из элементов, которые не выбраны
+            for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+        }
+
+        // Показать отфильтрованные элементы
+        function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {
+                    element.className += " " + arr2[i];
+                }
+            }
+        }
+
+        // Скрыть элементы, которые не выбраны
+        function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Добавить активный класс к текущей кнопке управления (выделите ее)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
 </@c.page>

@@ -21,9 +21,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, Integer price, Integer amount) {
+    public Product(String name, Integer price, Integer amount, String description) {
         this.name = name;
         this.price = price;
         this.amount = amount;
+        this.description=description;
     }
 }

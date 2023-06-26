@@ -69,7 +69,7 @@ public class AdminController {
             Map<String, Object> model
     ) throws IOException {
 
-       Product product = new Product(name, price, amount);
+       Product product = new Product(name, price, amount, description);
 
         if (file != null && !file.getOriginalFilename().isEmpty()) {
 

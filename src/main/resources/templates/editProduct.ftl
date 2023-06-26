@@ -6,7 +6,9 @@
 
     </@h.header>
     <main class="main">
+
         <div >
+            <div class="button_admin"><a class="button" href="/admin">Назад</a></div>
             <form >
                 <div class="nameProduct">Редактировать название
                     <input class="input_add" type="text" name="name" value="${product.name}"></div>
